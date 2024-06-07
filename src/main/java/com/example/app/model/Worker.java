@@ -2,9 +2,6 @@ package com.example.app.model;
 
 import java.util.List;
 
-/**
- *
- */
 public class Worker {
 
     private Long id;
