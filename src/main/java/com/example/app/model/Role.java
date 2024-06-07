@@ -1,10 +1,7 @@
 package com.example.app.model;
 
 /**
- * The role of User
- * <p>
- * Relation:
- * Many to One: User -> Role
+ * Many to One: Worker -> Role
  */
 public class Role {
     private Long id;
