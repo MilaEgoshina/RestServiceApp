@@ -12,19 +12,24 @@ public class ConnectionToDB{
     private static final String PASSWORD= "password";
     private static Connection connection;
 
-    public static Connection get
+    private ConnectionToDB(){
+    }
+    public static ConnectionToDB initializeConnection(){
 
-    private static void driver(String driver) {
+        ConnectionToDB localInstance = new ConnectionToDB();
+
         try {
-            Class.forName(driver);
+            Class.forName(PropertiesFileInit.getProperties(DRIVER));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return localInstance;
+
     }
 
     public Connection getConnection() throws SQLException {
         try {
-            return DriverManager.getConnection(
+            connection = DriverManager.getConnection(
                     PropertiesFileInit.getProperties(URL),
                     PropertiesFileInit.getProperties(USERNAME),
                     PropertiesFileInit.getProperties(PASSWORD)
@@ -32,7 +37,7 @@ public class ConnectionToDB{
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-        return null;
+        return connection;
     }
 
 
