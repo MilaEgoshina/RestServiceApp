@@ -1,5 +1,10 @@
 package com.example.app.dto;
 
+/**
+ * Represents a Role as it is exposed to the outside world.
+ * This class is a DTO (Data Transfer Object) that is used to transfer role information
+ * between different layers of the application, such as the server and the client.
+ */
 public class OutgoingRoleDTO {
 
     private Long id;

@@ -1,5 +1,9 @@
 package com.example.app.dto;
 
+/**
+ * This class represents a data transfer object for incoming role information of worker.
+ * It contains a single field for the name of the Role.
+ */
 public class IncomingRoleDTO {
 
     private String name;

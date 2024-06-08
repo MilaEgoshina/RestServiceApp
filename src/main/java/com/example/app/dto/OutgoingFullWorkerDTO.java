@@ -2,6 +2,18 @@ package com.example.app.dto;
 
 import java.util.List;
 
+/**
+ *   This class represents a Data Transfer Object (DTO) for worker data that is
+ *   sent from the server to the client.
+ *
+ *   It encapsulates the user's information including:
+ *   - ID
+ *   - First Name
+ *   - Last Name
+ *   - Role (as a {@link OutgoingRoleDTO})
+ *   - List of Computer Numbers (as {@link OutgoingComputerNumberDTO})
+ *   - List of Worker Relations (as {@link OutgoingWorkerRelationsDTO})
+ */
 public class OutgoingFullWorkerDTO {
 
     private Long id;
