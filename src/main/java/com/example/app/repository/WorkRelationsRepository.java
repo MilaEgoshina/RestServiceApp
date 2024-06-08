@@ -88,11 +88,19 @@ public class WorkRelationsRepository {
     public List<WorkRelations> findAllRelations() {
         List<WorkRelations> workRelationsList = new ArrayList<>();
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT relation_id, relation_name FROM relations WHERE relation_id = ?"))
-    }catch (SQLException e)
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM relations;")) {
 
-    {
-        e.printStackTrace();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                WorkRelations workRelations = new WorkRelations();
+                workRelations.setId(resultSet.getLong("relation_id"));
+                workRelations.setName(resultSet.getString("relation_name"));
+                workRelationsList.add(workRelations);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return workRelationsList;
     }
-
 }
