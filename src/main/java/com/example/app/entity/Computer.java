@@ -1,4 +1,4 @@
-package com.example.app.model;
+package com.example.app.entity;
 
 /**
  * One To One: Computer - Worker

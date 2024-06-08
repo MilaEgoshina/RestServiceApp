@@ -5,8 +5,8 @@ import com.example.app.dto.OutgoingComputerDTO;
 import com.example.app.dto.OutgoingFieldsWorkerDTO;
 import com.example.app.dto.UpdateComputerDTO;
 import com.example.app.mapper.interfaces.ComputerMapperInterface;
-import com.example.app.model.Computer;
-import com.example.app.model.Worker;
+import com.example.app.entity.Computer;
+import com.example.app.entity.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,21 +17,8 @@ import java.util.List;
  */
 public class ComputerMapper implements ComputerMapperInterface {
 
-    private static ComputerMapperInterface computerMapperInstance;
 
     public ComputerMapper() {
-    }
-
-    /**
-     * Returns the singleton instance of the ComputerMapper class.
-     *
-     * @return The singleton instance of the ComputerMapper class.
-     */
-    public static ComputerMapperInterface getComputerMapperInstance(){
-        if(computerMapperInstance == null){
-            computerMapperInstance = new ComputerMapper();
-        }
-        return computerMapperInstance;
     }
 
     /**

@@ -3,7 +3,7 @@ package com.example.app.mapper.interfaces;
 import com.example.app.dto.IncomingComputerDTO;
 import com.example.app.dto.OutgoingComputerDTO;
 import com.example.app.dto.UpdateComputerDTO;
-import com.example.app.model.Computer;
+import com.example.app.entity.Computer;
 
 /**
  * This interface defines methods for mapping between DTOs (Data Transfer Objects)

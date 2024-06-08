@@ -5,8 +5,8 @@ import com.example.app.dto.OutgoingFieldsWorkerDTO;
 import com.example.app.dto.OutgoingWorkRelationsDTO;
 import com.example.app.dto.UpdateWorkRelationsDTO;
 import com.example.app.mapper.interfaces.WorkRelationsMapperInterface;
-import com.example.app.model.WorkRelations;
-import com.example.app.model.Worker;
+import com.example.app.entity.WorkRelations;
+import com.example.app.entity.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,23 +18,8 @@ import java.util.List;
  */
 public class WorkRelationsMapper implements WorkRelationsMapperInterface {
 
-    private static WorkRelationsMapperInterface workRelationsMapperInstance;
-
     public WorkRelationsMapper() {
     }
-
-    /**
-     * Returns the singleton instance of the WorkRelationsMapper.
-     *
-     * @return The singleton instance of the WorkRelationsMapper.
-     */
-    public static WorkRelationsMapperInterface getWorkRelationsMapperInstance(){
-        if(workRelationsMapperInstance == null){
-            workRelationsMapperInstance = new WorkRelationsMapper();
-        }
-        return workRelationsMapperInstance;
-    }
-
 
     @Override
     public WorkRelations mapToEntity(IncomingWorkRelationsDTO incomingWorkRelationsDTO) {

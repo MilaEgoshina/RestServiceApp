@@ -3,7 +3,7 @@ package com.example.app.mapper.interfaces;
 import com.example.app.dto.IncomingWorkRelationsDTO;
 import com.example.app.dto.OutgoingWorkRelationsDTO;
 import com.example.app.dto.UpdateWorkRelationsDTO;
-import com.example.app.model.WorkRelations;
+import com.example.app.entity.WorkRelations;
 
 import java.util.List;
 

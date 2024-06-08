@@ -3,7 +3,7 @@ package com.example.app.mapper.interfaces;
 import com.example.app.dto.IncomingWorkerDTO;
 import com.example.app.dto.OutgoingFullWorkerDTO;
 import com.example.app.dto.UpdateWorkerDTO;
-import com.example.app.model.Worker;
+import com.example.app.entity.Worker;
 
 import java.util.List;
 

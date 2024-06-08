@@ -3,7 +3,7 @@ package com.example.app.mapper.interfaces;
 import com.example.app.dto.IncomingRoleDTO;
 import com.example.app.dto.OutgoingRoleDTO;
 import com.example.app.dto.UpdateRoleDTO;
-import com.example.app.model.Role;
+import com.example.app.entity.Role;
 
 import java.util.List;
 

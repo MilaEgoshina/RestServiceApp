@@ -1,6 +1,6 @@
 package com.example.app.dto;
 
-import com.example.app.model.Role;
+import com.example.app.entity.Role;
 
 /**
  * This class represents a Data Transfer Object (DTO) for incoming worker data.

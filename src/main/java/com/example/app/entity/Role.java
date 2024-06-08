@@ -1,4 +1,4 @@
-package com.example.app.model;
+package com.example.app.entity;
 
 /**
  * Many to One: Worker -> Role

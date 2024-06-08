@@ -4,23 +4,15 @@ import com.example.app.dto.IncomingRoleDTO;
 import com.example.app.dto.OutgoingRoleDTO;
 import com.example.app.dto.UpdateRoleDTO;
 import com.example.app.mapper.interfaces.RoleMapperInterface;
-import com.example.app.model.Role;
+import com.example.app.entity.Role;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RoleMapper implements RoleMapperInterface {
 
-    private static RoleMapperInterface roleMapperInstance;
 
     public RoleMapper() {
-    }
-
-    private static RoleMapperInterface getRoleMapperInstance(){
-        if(roleMapperInstance == null){
-            roleMapperInstance = new RoleMapper();
-        }
-        return roleMapperInstance;
     }
 
     @Override
