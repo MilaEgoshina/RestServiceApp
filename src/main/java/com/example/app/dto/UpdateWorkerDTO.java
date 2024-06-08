@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Data Transfer Object (DTO) representing an update request for a worker.
- * This DTO is used to encapsulate the data required to update an existing worker in the system.
+ * This DTO is used to encapsulate the full data required to update an existing worker in the system.
  * It includes fields for the worker's ID, first name, last name, role, computer numbers, and relations.
  */
 public class UpdateWorkerDTO {
@@ -16,11 +16,11 @@ public class UpdateWorkerDTO {
     private UpdateRoleDTO updateRoleDTO;
 
     private List<UpdateComputerNumberDTO> updateComputerNumberDTOList;
-    private List<UpdateWorkerRelationsDTO> updateWorkerRelationsDTOS;
+    private List<UpdateWorkRelationsDTO> updateWorkerRelationsDTOS;
 
     public UpdateWorkerDTO(Long id, String firstName, String lastName, UpdateRoleDTO updateRoleDTO,
                            List<UpdateComputerNumberDTO> updateComputerNumberDTOList,
-                           List<UpdateWorkerRelationsDTO> updateWorkerRelationsDTOS) {
+                           List<UpdateWorkRelationsDTO> updateWorkerRelationsDTOS) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -72,11 +72,11 @@ public class UpdateWorkerDTO {
         this.updateComputerNumberDTOList = updateComputerNumberDTOList;
     }
 
-    public List<UpdateWorkerRelationsDTO> getUpdateWorkerRelationsDTOS() {
+    public List<UpdateWorkRelationsDTO> getUpdateWorkerRelationsDTOS() {
         return updateWorkerRelationsDTOS;
     }
 
-    public void setUpdateWorkerRelationsDTOS(List<UpdateWorkerRelationsDTO> updateWorkerRelationsDTOS) {
+    public void setUpdateWorkerRelationsDTOS(List<UpdateWorkRelationsDTO> updateWorkerRelationsDTOS) {
         this.updateWorkerRelationsDTOS = updateWorkerRelationsDTOS;
     }
 }

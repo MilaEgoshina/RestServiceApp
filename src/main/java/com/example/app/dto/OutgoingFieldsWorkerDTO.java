@@ -2,7 +2,7 @@ package com.example.app.dto;
 
 /**
  * This class is a Data Transfer Object (DTO) used to transfer a minimal set of worker information (ID, first name, last name)
- * between different layers of an application, such as from the database to the presentation layer.
+ * between different layers of an application
  */
 public class OutgoingFieldsWorkerDTO {
 

@@ -3,7 +3,7 @@ package com.example.app.dto;
 import java.util.List;
 
 /**
- *   This class represents a Data Transfer Object (DTO) for worker data that is
+ *   This class represents a Data Transfer Object (DTO) for worker full data that is
  *   sent from the server to the client.
  *
  *   It encapsulates the user's information including:
@@ -12,7 +12,7 @@ import java.util.List;
  *   - Last Name
  *   - Role (as a {@link OutgoingRoleDTO})
  *   - List of Computer Numbers (as {@link OutgoingComputerNumberDTO})
- *   - List of Worker Relations (as {@link OutgoingWorkerRelationsDTO})
+ *   - List of Worker Relations (as {@link OutgoingWorkRelationsDTO})
  */
 public class OutgoingFullWorkerDTO {
 
@@ -22,17 +22,17 @@ public class OutgoingFullWorkerDTO {
 
     private OutgoingRoleDTO outgoingRoleDTO;
     private List<OutgoingComputerNumberDTO> outgoingComputerNumberDTOS;
-    private List<OutgoingWorkerRelationsDTO> outgoingWorkerRelationsDTOS;
+    private List<OutgoingWorkRelationsDTO> outgoingWorkRelationsDTOS;
 
     public OutgoingFullWorkerDTO(Long id, String firstName, String lastName, OutgoingRoleDTO outgoingRoleDTO,
                                  List<OutgoingComputerNumberDTO> outgoingComputerNumberDTOS,
-                                 List<OutgoingWorkerRelationsDTO> outgoingWorkerRelationsDTOS) {
+                                 List<OutgoingWorkRelationsDTO> outgoingWorkRelationsDTOS) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.outgoingRoleDTO = outgoingRoleDTO;
         this.outgoingComputerNumberDTOS = outgoingComputerNumberDTOS;
-        this.outgoingWorkerRelationsDTOS = outgoingWorkerRelationsDTOS;
+        this.outgoingWorkRelationsDTOS = outgoingWorkRelationsDTOS;
     }
 
     public Long getId() {
@@ -75,11 +75,11 @@ public class OutgoingFullWorkerDTO {
         this.outgoingComputerNumberDTOS = outgoingComputerNumberDTOS;
     }
 
-    public List<OutgoingWorkerRelationsDTO> getOutgoingWorkerRelationsDTOS() {
-        return outgoingWorkerRelationsDTOS;
+    public List<OutgoingWorkRelationsDTO> getOutgoingWorkerRelationsDTOS() {
+        return outgoingWorkRelationsDTOS;
     }
 
-    public void setOutgoingWorkerRelationsDTOS(List<OutgoingWorkerRelationsDTO> outgoingWorkerRelationsDTOS) {
-        this.outgoingWorkerRelationsDTOS = outgoingWorkerRelationsDTOS;
+    public void setOutgoingWorkerRelationsDTOS(List<OutgoingWorkRelationsDTO> outgoingWorkerRelationsDTOS) {
+        this.outgoingWorkRelationsDTOS = outgoingWorkerRelationsDTOS;
     }
 }

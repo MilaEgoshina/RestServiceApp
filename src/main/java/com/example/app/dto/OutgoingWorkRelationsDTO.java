@@ -3,11 +3,11 @@ package com.example.app.dto;
 import java.util.List;
 
 /**
- * This class represents a Worker Relations object in a simplified format for outgoing data transfer.
+ * This class represents a Work Relations object in a simplified format for outgoing data transfer.
  * It contains basic information about the relations, including its ID, name, and a list of associated workers in a
  * simplified format.
  */
-public class OutgoingWorkerRelationsDTO {
+public class OutgoingWorkRelationsDTO {
 
     private Long id;
     private String name;
@@ -17,13 +17,13 @@ public class OutgoingWorkerRelationsDTO {
      */
     private List<OutgoingFieldsWorkerDTO> outgoingFieldsWorkerDTOList;
 
-    public OutgoingWorkerRelationsDTO(Long id, String name, List<OutgoingFieldsWorkerDTO> outgoingFieldsWorkerDTOList) {
+    public OutgoingWorkRelationsDTO(Long id, String name, List<OutgoingFieldsWorkerDTO> outgoingFieldsWorkerDTOList) {
         this.id = id;
         this.name = name;
         this.outgoingFieldsWorkerDTOList = outgoingFieldsWorkerDTOList;
     }
 
-    public OutgoingWorkerRelationsDTO() {
+    public OutgoingWorkRelationsDTO() {
     }
 
     public Long getId() {

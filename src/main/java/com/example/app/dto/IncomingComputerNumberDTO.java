@@ -1,7 +1,8 @@
 package com.example.app.dto;
 
 /**
- * This class represents a data transfer object for incoming computer serial numbers of workers.
+ * This class is used to receive work relations information from external sources
+ * and map it to a standard format before it's processed or persisted in the system.
  */
 public class IncomingComputerNumberDTO {
 
