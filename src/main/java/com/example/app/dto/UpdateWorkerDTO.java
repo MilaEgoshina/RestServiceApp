@@ -15,11 +15,11 @@ public class UpdateWorkerDTO {
 
     private UpdateRoleDTO updateRoleDTO;
 
-    private List<UpdateComputerNumberDTO> updateComputerNumberDTOList;
+    private List<UpdateComputerDTO> updateComputerNumberDTOList;
     private List<UpdateWorkRelationsDTO> updateWorkerRelationsDTOS;
 
     public UpdateWorkerDTO(Long id, String firstName, String lastName, UpdateRoleDTO updateRoleDTO,
-                           List<UpdateComputerNumberDTO> updateComputerNumberDTOList,
+                           List<UpdateComputerDTO> updateComputerNumberDTOList,
                            List<UpdateWorkRelationsDTO> updateWorkerRelationsDTOS) {
         this.id = id;
         this.firstName = firstName;
@@ -64,11 +64,11 @@ public class UpdateWorkerDTO {
         this.updateRoleDTO = updateRoleDTO;
     }
 
-    public List<UpdateComputerNumberDTO> getUpdateComputerNumberDTOList() {
+    public List<UpdateComputerDTO> getUpdateComputerNumberDTOList() {
         return updateComputerNumberDTOList;
     }
 
-    public void setUpdateComputerNumberDTOList(List<UpdateComputerNumberDTO> updateComputerNumberDTOList) {
+    public void setUpdateComputerNumberDTOList(List<UpdateComputerDTO> updateComputerNumberDTOList) {
         this.updateComputerNumberDTOList = updateComputerNumberDTOList;
     }
 

@@ -9,15 +9,16 @@ public class Worker {
     private String lastName;
     private Role role;
     private List<WorkRelations> workRelationsList;
-    private List<ComputerNumber> computerNumberList;
+    private List<Computer> computerList;
 
-    public Worker(Long id, String firstName, String lastName, Role role, List<WorkRelations> workRelationsList, List<ComputerNumber> computerNumberList) {
+    public Worker(Long id, String firstName, String lastName, Role role, List<WorkRelations> workRelationsList,
+                  List<Computer> computerList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.workRelationsList = workRelationsList;
-        this.computerNumberList = computerNumberList;
+        this.computerList = computerList;
     }
 
     public Worker() {
@@ -63,11 +64,11 @@ public class Worker {
         this.workRelationsList = workRelationsList;
     }
 
-    public List<ComputerNumber> getComputerNumberList() {
-        return computerNumberList;
+    public List<Computer> getComputerList() {
+        return computerList;
     }
 
-    public void setComputerNumberList(List<ComputerNumber> computerNumberList) {
-        this.computerNumberList = computerNumberList;
+    public void setComputerList(List<Computer> computerNumberList) {
+        this.computerList = computerNumberList;
     }
 }

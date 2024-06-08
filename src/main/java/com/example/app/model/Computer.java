@@ -1,20 +1,20 @@
 package com.example.app.model;
 
 /**
- * One To One: ComputerNumber - Worker
+ * One To One: Computer - Worker
  */
-public class ComputerNumber {
+public class Computer {
 
     private Long id;
-    private String number;
+    private String serialNumber;
     private Worker worker;
 
-    public ComputerNumber() {
+    public Computer() {
     }
 
-    public ComputerNumber(Long id, String number, Worker worker) {
+    public Computer(Long id, String number, Worker worker) {
         this.id = id;
-        this.number = number;
+        this.serialNumber = number;
         this.worker = worker;
     }
 
@@ -26,12 +26,12 @@ public class ComputerNumber {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getSerialNumber() {
+        return serialNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
     }
 
     public Worker getWorker() {

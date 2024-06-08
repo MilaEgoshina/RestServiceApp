@@ -11,7 +11,7 @@ import java.util.List;
  *   - First Name
  *   - Last Name
  *   - Role (as a {@link OutgoingRoleDTO})
- *   - List of Computer Numbers (as {@link OutgoingComputerNumberDTO})
+ *   - List of Computer Numbers (as {@link OutgoingComputerDTO})
  *   - List of Worker Relations (as {@link OutgoingWorkRelationsDTO})
  */
 public class OutgoingFullWorkerDTO {
@@ -21,11 +21,11 @@ public class OutgoingFullWorkerDTO {
     private String lastName;
 
     private OutgoingRoleDTO outgoingRoleDTO;
-    private List<OutgoingComputerNumberDTO> outgoingComputerNumberDTOS;
+    private List<OutgoingComputerDTO> outgoingComputerNumberDTOS;
     private List<OutgoingWorkRelationsDTO> outgoingWorkRelationsDTOS;
 
     public OutgoingFullWorkerDTO(Long id, String firstName, String lastName, OutgoingRoleDTO outgoingRoleDTO,
-                                 List<OutgoingComputerNumberDTO> outgoingComputerNumberDTOS,
+                                 List<OutgoingComputerDTO> outgoingComputerNumberDTOS,
                                  List<OutgoingWorkRelationsDTO> outgoingWorkRelationsDTOS) {
         this.id = id;
         this.firstName = firstName;
@@ -67,11 +67,11 @@ public class OutgoingFullWorkerDTO {
         this.outgoingRoleDTO = outgoingRoleDTO;
     }
 
-    public List<OutgoingComputerNumberDTO> getOutgoingComputerNumberDTOS() {
+    public List<OutgoingComputerDTO> getOutgoingComputerNumberDTOS() {
         return outgoingComputerNumberDTOS;
     }
 
-    public void setOutgoingComputerNumberDTOS(List<OutgoingComputerNumberDTO> outgoingComputerNumberDTOS) {
+    public void setOutgoingComputerNumberDTOS(List<OutgoingComputerDTO> outgoingComputerNumberDTOS) {
         this.outgoingComputerNumberDTOS = outgoingComputerNumberDTOS;
     }
 
