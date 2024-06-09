@@ -24,7 +24,7 @@ public class WorkerAndRelationsRepository {
     public WorkerAndRelations saveWorkerAndRelations(WorkerAndRelations workerAndRelations) {
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO workerAndRelations (worker_id, relation_id) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO worker_relations (worker_id, relation_id) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setLong(1, workerAndRelations.getWorkerId());
             preparedStatement.setLong(2,workerAndRelations.getRelationId());
@@ -33,7 +33,7 @@ public class WorkerAndRelationsRepository {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                workerAndRelations = new WorkerAndRelations(resultSet.getLong("workerAndRelations_id"),
+                workerAndRelations = new WorkerAndRelations(resultSet.getLong("worker_relations_id"),
                         workerAndRelations.getWorkerId(),
                         workerAndRelations.getRelationId());
             }
@@ -47,7 +47,7 @@ public class WorkerAndRelationsRepository {
     public void updateWorkerAndRelations(WorkerAndRelations workerAndRelations) {
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE workerAndRelations SET worker_id= ?, relation_id =? WHERE workerAndRelations_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE worker_relations SET worker_id= ?, relation_id =? WHERE worker_relations_id = ?;")) {
 
             preparedStatement.setLong(1, workerAndRelations.getWorkerId());
             preparedStatement.setLong(2, workerAndRelations.getRelationId());
@@ -63,7 +63,7 @@ public class WorkerAndRelationsRepository {
     public void deleteWorkerAndRelationsById(Long id) {
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM workerAndRelations WHERE workerAndRelations_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM worker_relations WHERE worker_relations_id = ?;")) {
 
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
@@ -74,7 +74,7 @@ public class WorkerAndRelationsRepository {
 
     public void deleteWorkerAndRelationsByWorkerId(Long workerId){
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM workerAndRelations WHERE worker_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM worker_relations WHERE worker_id = ?;")) {
 
             preparedStatement.setLong(1, workerId);
             preparedStatement.executeUpdate();
@@ -85,7 +85,7 @@ public class WorkerAndRelationsRepository {
 
     public void deleteWorkerAndRelationsByRelationId(Long relationId){
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM workerAndRelations WHERE relation_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM worker_relations WHERE relation_id = ?;")) {
 
             preparedStatement.setLong(1, relationId);
             preparedStatement.executeUpdate();
@@ -98,7 +98,7 @@ public class WorkerAndRelationsRepository {
         WorkerAndRelations workerAndRelations = null;
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT workerAndRelations_id, worker_id, relation_id FROM workerAndRelations WHERE workerAndRelations_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT worker_relations_id, worker_id, relation_id FROM worker_relations WHERE worker_relations_id = ?;")) {
 
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -116,7 +116,7 @@ public class WorkerAndRelationsRepository {
         WorkerAndRelations workerAndRelations = null;
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT workerAndRelations_id, worker_id, relation_id FROM workerAndRelations WHERE worker_id = ? AND relation_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT worker_relations_id, worker_id, relation_id FROM workerAndRelations WHERE worker_id = ? AND relation_id = ?;")) {
 
             preparedStatement.setLong(1, workerId);
             preparedStatement.setLong(1, relationId);
@@ -134,7 +134,7 @@ public class WorkerAndRelationsRepository {
     public List<WorkerAndRelations> findAllWorkerAndRelations() {
         List<WorkerAndRelations> workerAndRelationsList = new ArrayList<>();
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM workerAndRelations;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM worker_relations;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -150,7 +150,7 @@ public class WorkerAndRelationsRepository {
     public List<WorkerAndRelations> findAllWorkerAndRelationsByWorkerId(Long workerId) {
         List<WorkerAndRelations> workerAndRelationsList = new ArrayList<>();
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM workerAndRelations WHERE worker_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM worker_relations WHERE worker_id = ?;")) {
 
             preparedStatement.setLong(1, workerId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -167,7 +167,7 @@ public class WorkerAndRelationsRepository {
     public List<WorkerAndRelations> findAllWorkerAndRelationsByRelationId(Long relationId) {
         List<WorkerAndRelations> workerAndRelationsList = new ArrayList<>();
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM workerAndRelations WHERE relation_id = ?;")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM worker_relations WHERE relation_id = ?;")) {
 
             preparedStatement.setLong(1, relationId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -182,7 +182,7 @@ public class WorkerAndRelationsRepository {
     }
     private WorkerAndRelations createWorkerAndRelations(ResultSet resultSet) throws SQLException{
         WorkerAndRelations workerAndRelations = new WorkerAndRelations(
-                resultSet.getLong("workerAndRelations_id"),
+                resultSet.getLong("worker_relations_id"),
                 resultSet.getLong("worker_id"),
                 resultSet.getLong("relation_id")
         );
