@@ -7,7 +7,6 @@ import com.example.app.entity.Computer;
 import com.example.app.exception.NotFoundException;
 import com.example.app.mapper.ComputerMapper;
 import com.example.app.repository.ComputerRepository;
-import com.example.app.service.ComputerService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
