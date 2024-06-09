@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ComputerService {
 
-    private ComputerRepository computerRepository;
-    private ComputerMapper computerMapper;
+    private final ComputerRepository computerRepository;
+    private final ComputerMapper computerMapper;
 
     public ComputerService(){
         this.computerRepository = new ComputerRepository();

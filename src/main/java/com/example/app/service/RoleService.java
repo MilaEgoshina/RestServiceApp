@@ -12,8 +12,8 @@ import java.util.List;
 
 public class RoleService {
 
-    private RoleRepository roleRepository;
-    private RoleMapper roleMapper;
+    private final RoleRepository roleRepository;
+    private final RoleMapper roleMapper;
 
     public RoleService(){
         this.roleRepository = new RoleRepository();

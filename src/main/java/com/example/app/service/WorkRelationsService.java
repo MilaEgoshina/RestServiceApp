@@ -15,10 +15,10 @@ import java.util.List;
 
 public class WorkRelationsService {
 
-    private WorkRelationsRepository workRelationsRepository;
-    private WorkerRepository workerRepository;
-    private WorkerAndRelationsRepository workerAndRelationsRepository;
-    private WorkRelationsMapper workRelationsMapper;
+    private final WorkRelationsRepository workRelationsRepository;
+    private final WorkerRepository workerRepository;
+    private final WorkerAndRelationsRepository workerAndRelationsRepository;
+    private final WorkRelationsMapper workRelationsMapper;
 
     public WorkRelationsService() {
         this.workRelationsRepository = new WorkRelationsRepository();

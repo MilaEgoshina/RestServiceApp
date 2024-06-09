@@ -12,8 +12,8 @@ import java.util.List;
 
 public class WorkerService {
 
-    private WorkerRepository workerRepository;
-    private WorkerMapper workerMapper;
+    private final WorkerRepository workerRepository;
+    private final WorkerMapper workerMapper;
 
     public WorkerService(){
         this.workerRepository = new WorkerRepository();
