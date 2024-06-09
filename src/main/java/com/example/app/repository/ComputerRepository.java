@@ -65,7 +65,7 @@ public class ComputerRepository {
         }
     }
 
-    public void deleteRelationsById(Long id) {
+    public void deleteComputerById(Long id) {
 
         try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM computers WHERE computer_id = ?;")) {
@@ -77,26 +77,50 @@ public class ComputerRepository {
         }
     }
 
-    public Computer findComputerById(Long id) {
-        Computer computer = new Computer();
+    public void deleteComputerByWorkerId(Long workerId) {
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT relation_id, relation_name FROM relations WHERE relation_id = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM computers WHERE worker_id = ?;")) {
+
+            preparedStatement.setLong(1, workerId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Computer findComputerById(Long id) {
+        Computer computer = null;
+
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT computer_id, serial_number, worker_id FROM computers WHERE computer_id = ?;")) {
 
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-
-                Worker worker = new Worker(resultSet.getLong("worker_id"),
-                        null,null,null,null,null);
-                computer.setId(resultSet.getLong("computer_id"));
-                computer.setSerialNumber(resultSet.getString("serial_number"));
-                computer.setWorker(worker);
+                computer = createComputer(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        return computer;
+    }
+
+    public Computer findComputerBySerialNumber(String serialNumber) {
+        Computer computer = null;
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT computer_id, serial_number, worker_id FROM computers WHERE serial_number = ?;")) {
+
+            preparedStatement.setString(1, serialNumber);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                computer = createComputer(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return computer;
     }
 
@@ -107,18 +131,57 @@ public class ComputerRepository {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                Computer computer = new Computer();
-                Worker worker = new Worker(resultSet.getLong("worker_id"),
-                        null,null,null,null,null);
-                computer.setId(resultSet.getLong("computer_id"));
-                computer.setSerialNumber(resultSet.getString("serial_number"));
-                computer.setWorker(worker);
-                computerList.add(computer);
+                computerList.add(createComputer(resultSet));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return computerList;
+    }
+
+    public List<Computer> findAllComputersByWorkerId(Long workerId){
+        List<Computer> computerList = new ArrayList<>();
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM computers WHERE worker_id = ?;")) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                computerList.add(createComputer(resultSet));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return computerList;
+    }
+
+    public boolean existEntityById(Long id){
+        boolean isExisting = true;
+
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM computers WHERE computer_id = ? LIMIT 1);")){
+
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                isExisting = resultSet.getBoolean(1);
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isExisting;
+    }
+
+    private Computer createComputer(ResultSet resultSet) throws SQLException{
+        Computer computer = new Computer();
+        Worker worker = new Worker(resultSet.getLong("worker_id"),
+                null,null,null,null,null);
+        computer.setId(resultSet.getLong("computer_id"));
+        computer.setSerialNumber(resultSet.getString("serial_number"));
+        computer.setWorker(worker);
+        return computer;
     }
 }

@@ -96,7 +96,7 @@ public class WorkerAndRelationsRepository {
     }
 
     public WorkerAndRelations findWorkerAndRelationsById(Long id) {
-        WorkerAndRelations workerAndRelations = new WorkerAndRelations();
+        WorkerAndRelations workerAndRelations = null;
 
         try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT workerAndRelations_id, worker_id, relation_id FROM workerAndRelations WHERE workerAndRelations_id = ?;")) {
@@ -114,7 +114,7 @@ public class WorkerAndRelationsRepository {
     }
 
     public WorkerAndRelations findByWorkerIdAndRelationId(Long workerId, Long relationId){
-        WorkerAndRelations workerAndRelations = new WorkerAndRelations();
+        WorkerAndRelations workerAndRelations = null;
 
         try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT workerAndRelations_id, worker_id, relation_id FROM workerAndRelations WHERE worker_id = ? AND relation_id = ?;")) {

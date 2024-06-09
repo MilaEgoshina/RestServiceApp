@@ -99,4 +99,23 @@ public class WorkRelationsRepository {
 
         return workRelationsList;
     }
+
+    public boolean existEntityById(Long id){
+        boolean isExisting = true;
+
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM relations WHERE relation_id = ? LIMIT 1);")){
+
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                isExisting = resultSet.getBoolean(1);
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isExisting;
+    }
 }
