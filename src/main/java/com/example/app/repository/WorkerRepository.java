@@ -53,6 +53,9 @@ public class WorkerRepository {
                         null,
                         null);
             }
+
+            saveWorkerRelationsList(worker);
+            saveComputerList(worker);
             worker.getWorkRelationsList();
             worker.getComputerList();
         } catch (SQLException e) {
@@ -81,6 +84,8 @@ public class WorkerRepository {
             preparedStatement.setLong(4, worker.getId());
             preparedStatement.executeUpdate();
 
+            saveWorkerRelationsList(worker);
+            saveComputerList(worker);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -239,6 +244,7 @@ public class WorkerRepository {
                 computerRepository.deleteComputerById(computerId);
             }
         }else {
+            // If the worker has no computer, delete all existing computers associated with the worker
             computerRepository.deleteComputerByWorkerId(worker.getId());
         }
     }
