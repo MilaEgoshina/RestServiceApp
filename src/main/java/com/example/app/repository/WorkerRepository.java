@@ -234,6 +234,7 @@ public class WorkerRepository {
                     computerRepository.saveComputer(computer);
                 }
             }
+            // Delete any existing computers that are no longer associated with the worker
             for(Long computerId : computerIdList){
                 computerRepository.deleteComputerById(computerId);
             }
