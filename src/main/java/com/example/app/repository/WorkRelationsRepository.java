@@ -3,10 +3,7 @@ package com.example.app.repository;
 import com.example.app.config.ConnectionToDB;
 import com.example.app.entity.WorkRelations;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class WorkRelationsRepository {
     public WorkRelations saveWorkRelations(WorkRelations workRelations) {
 
         try (Connection connection = connectionToDB.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO relations (realtion_name) VALUES(?)")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO relations (realtion_name) VALUES(?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, workRelations.getName());
             preparedStatement.executeUpdate();
