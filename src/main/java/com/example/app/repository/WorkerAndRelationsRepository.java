@@ -1,7 +1,6 @@
 package com.example.app.repository;
 
 import com.example.app.config.ConnectionToDB;
-import com.example.app.entity.Worker;
 import com.example.app.entity.WorkerAndRelations;
 
 import java.sql.*;

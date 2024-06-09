@@ -50,7 +50,7 @@ public class RoleRepository {
         }
     }
 
-    public void deleteRelationsById(Long id) {
+    public void deleteRoleById(Long id) {
 
         try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM roles WHERE role_id = ?;")) {
@@ -99,5 +99,23 @@ public class RoleRepository {
         }
 
         return roleList;
+    }
+    public boolean existEntityById(Long id){
+        boolean isExisting = true;
+
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM roles WHERE role_id = ? LIMIT 1);")){
+
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                isExisting = resultSet.getBoolean(1);
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isExisting;
     }
 }

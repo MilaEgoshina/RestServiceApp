@@ -150,6 +150,25 @@ public class WorkerRepository {
         return workerList;
     }
 
+    public boolean existEntityById(Long id){
+        boolean isExisting = true;
+
+        try (Connection connection = connectionToDB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM workers WHERE worker_id = ? LIMIT 1);")){
+
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                isExisting = resultSet.getBoolean(1);
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isExisting;
+    }
+
     /**
      * This method is responsible for saving the worker relations list for a given worker.
      * It checks if the worker relations list is not null, then proceeds to update the worker relations .
