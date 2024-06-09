@@ -25,7 +25,7 @@ public class WorkRelationsRepository {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                workRelations = new WorkRelations(resultSet.getLong("workRelations_id"),
+                workRelations = new WorkRelations(resultSet.getLong("relations_id"),
                         workRelations.getName(),
                         null);
             }
