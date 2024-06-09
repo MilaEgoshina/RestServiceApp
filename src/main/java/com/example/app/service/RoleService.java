@@ -11,13 +11,16 @@ import com.example.app.repository.RoleRepository;
 import java.util.List;
 
 public class RoleService {
-
     private final RoleRepository roleRepository;
     private final RoleMapper roleMapper;
-
     public RoleService(){
         this.roleRepository = new RoleRepository();
         this.roleMapper = new RoleMapper();
+    }
+
+    public RoleService(RoleRepository roleRepository, RoleMapper roleMapper) {
+        this.roleRepository = roleRepository;
+        this.roleMapper = roleMapper;
     }
 
     public OutgoingRoleDTO saveRole(IncomingRoleDTO incomingRoleDTO){
@@ -26,7 +29,6 @@ public class RoleService {
         role = roleRepository.saveRole(role);
         return roleMapper.mapToDTO(role);
     }
-
     public void updateRole(UpdateRoleDTO updateRoleDTO) throws NotFoundException {
 
         if(roleRepository.existEntityById(updateRoleDTO.getId())){
@@ -36,7 +38,6 @@ public class RoleService {
             throw new NotFoundException("There is not such role");
         }
     }
-
     public OutgoingRoleDTO findRoleById(Long id) throws NotFoundException {
 
         Role role = roleRepository.findRoleById(id);
@@ -47,13 +48,11 @@ public class RoleService {
             throw new NotFoundException("There is not such work relations");
         }
     }
-
     public List<OutgoingRoleDTO> findAllRole(){
 
         List<Role> roleList = roleRepository.findAllRoles();
         return roleMapper.mapToOutGoingDtos(roleList);
     }
-
     public void deleteRoleById(Long id){
 
         roleRepository.deleteRoleById(id);

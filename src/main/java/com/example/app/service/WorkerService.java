@@ -11,22 +11,18 @@ import com.example.app.repository.WorkerRepository;
 import java.util.List;
 
 public class WorkerService {
-
     private final WorkerRepository workerRepository;
     private final WorkerMapper workerMapper;
-
     public WorkerService(){
         this.workerRepository = new WorkerRepository();
         this.workerMapper = new WorkerMapper();
     }
-
     public OutgoingFullWorkerDTO saveWorker(IncomingWorkerDTO incomingWorkerDTO){
 
         Worker worker = workerMapper.mapToEntity(incomingWorkerDTO);
         worker = workerRepository.saveWorker(worker);
         return workerMapper.mapToDTO(worker);
     }
-
     public void updateWorker(UpdateWorkerDTO updateWorkerDTO) throws NotFoundException {
 
         if(workerRepository.existEntityById(updateWorkerDTO.getId())){
@@ -36,7 +32,6 @@ public class WorkerService {
             throw new NotFoundException("There is not such worker");
         }
     }
-
     public OutgoingFullWorkerDTO findWorkerById(Long id) throws NotFoundException {
 
         Worker worker = workerRepository.findWorkerById(id);
@@ -47,15 +42,12 @@ public class WorkerService {
             throw new NotFoundException("There is not such work relations");
         }
     }
-
     public List<OutgoingFullWorkerDTO> findAllWorker(){
 
         List<Worker> workerList = workerRepository.findAllWorkers();
         return workerMapper.mapToOutGoingDtos(workerList);
     }
-
     public void deleteWorkerById(Long id){
-
         workerRepository.deleteWorkerById(id);
     }
 }
