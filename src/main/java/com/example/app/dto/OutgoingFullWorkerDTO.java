@@ -35,6 +35,9 @@ public class OutgoingFullWorkerDTO {
         this.outgoingWorkRelationsDTOS = outgoingWorkRelationsDTOS;
     }
 
+    public OutgoingFullWorkerDTO() {
+    }
+
     public Long getId() {
         return id;
     }
