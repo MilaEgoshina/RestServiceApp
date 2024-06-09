@@ -10,7 +10,6 @@ import java.util.List;
 public class RoleRepository {
 
     private ConnectionToDB connectionToDB = ConnectionToDB.initializeConnection();
-
     public RoleRepository() {
     }
 
