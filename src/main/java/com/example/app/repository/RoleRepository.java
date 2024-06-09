@@ -16,7 +16,7 @@ public class RoleRepository {
 
     public Role saveRole(Role role) {
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO roles (role_name) VALUES (?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, role.getName());
@@ -36,7 +36,7 @@ public class RoleRepository {
     }
 
     public void updateRole(Role role) {
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE roles SET role_name = ? WHERE role_id = ?;")) {
 
             preparedStatement.setString(1, role.getName());
@@ -52,7 +52,7 @@ public class RoleRepository {
 
     public void deleteRoleById(Long id) {
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM roles WHERE role_id = ?;")) {
 
             preparedStatement.setLong(1, id);
@@ -65,7 +65,7 @@ public class RoleRepository {
     public Role findRoleById(Long id) {
         Role role = new Role();
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT role_id, role_name FROM roles WHERE role_id = ?")) {
 
             preparedStatement.setLong(1, id);
@@ -84,7 +84,7 @@ public class RoleRepository {
 
     public List<Role> findAllRoles() {
         List<Role> roleList = new ArrayList<>();
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM roles;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -103,7 +103,7 @@ public class RoleRepository {
     public boolean existEntityById(Long id){
         boolean isExisting = true;
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM roles WHERE role_id = ? LIMIT 1);")){
 
             preparedStatement.setLong(1,id);

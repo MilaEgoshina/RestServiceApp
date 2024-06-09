@@ -29,7 +29,7 @@ public class WorkerRepository {
 
     public Worker saveWorker(Worker worker) {
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO worker (worker_firstname, worker_lastname, role_id) VALUES (?, ? ,?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, worker.getFirstName());
@@ -67,7 +67,7 @@ public class WorkerRepository {
 
     public void updateWorker(Worker worker) {
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE workers SET worker_firstname = ?, worker_lastname = ?, role_id =? WHERE worker_id = ?;")) {
 
             preparedStatement.setString(1, worker.getFirstName());
@@ -93,7 +93,7 @@ public class WorkerRepository {
 
     public void deleteWorkerById(Long id) {
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM workers WHERE worker_id = ?;")) {
 
             computerRepository.deleteComputerById(id);
@@ -107,7 +107,7 @@ public class WorkerRepository {
     public Worker findWorkerById(Long id) {
         Worker worker = new Worker();
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT worker_id, worker_firstname, worker_lastname, role_id FROM workers WHERE worker_id = ?")) {
 
             preparedStatement.setLong(1, id);
@@ -129,7 +129,7 @@ public class WorkerRepository {
 
     public List<Worker> findAllWorkers() {
         List<Worker> workerList = new ArrayList<>();
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM workers;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -153,7 +153,7 @@ public class WorkerRepository {
     public boolean existEntityById(Long id){
         boolean isExisting = true;
 
-        try (Connection connection = connectionToDB.getConnection();
+        try (Connection connection = ConnectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM workers WHERE worker_id = ? LIMIT 1);")){
 
             preparedStatement.setLong(1,id);
