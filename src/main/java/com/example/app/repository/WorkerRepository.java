@@ -13,12 +13,14 @@ public class WorkerRepository {
     private ComputerRepository computerRepository;
     private RoleRepository roleRepository;
     private WorkRelationsRepository workRelationsRepository;
+    private WorkerAndRelationsRepository workerAndRelationsRepository;
 
     public WorkerRepository() {
 
         this.computerRepository = new ComputerRepository();
         this.roleRepository = new RoleRepository();
         this.workRelationsRepository = new WorkRelationsRepository();
+        this.workerAndRelationsRepository = new WorkerAndRelationsRepository();
     }
 
 
@@ -94,7 +96,7 @@ public class WorkerRepository {
         }
     }
 
-    public Worker findRelationsById(Long id) {
+    public Worker findWorkerById(Long id) {
         Worker worker = new Worker();
 
         try (Connection connection = connectionToDB.getConnection();
@@ -140,7 +142,12 @@ public class WorkerRepository {
         return workerList;
     }
 
-    private void saveWorkRelationsList(Worker worker){
+    private void saveWorkerRelationsList(Worker worker){
+
+        if(worker.getWorkRelationsList() != null){
+            List<Long> workerRelationsList = new ArrayList<>();
+
+        }
 
     }
 }
