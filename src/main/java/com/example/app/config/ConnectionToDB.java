@@ -27,7 +27,7 @@ public class ConnectionToDB{
 
     }
 
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         try {
             connection = DriverManager.getConnection(
                     PropertiesFileInit.getProperties(URL),
