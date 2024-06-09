@@ -33,6 +33,6 @@ public class WorkRelationsService {
     public void updateWorkRelations(UpdateWorkRelationsDTO updateWorkRelationsDTO){
 
         WorkRelations workRelations = workRelationsMapper.update(updateWorkRelationsDTO);
-        workRelations = workRelationsRepository.saveWorkRelations(workRelations);
+        workRelationsRepository.updateWorkRelations(workRelations);
     }
 }
