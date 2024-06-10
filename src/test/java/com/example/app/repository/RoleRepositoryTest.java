@@ -87,15 +87,6 @@ public class RoleRepositoryTest {
     }
 
     @Test
-    void testFinRoleById(Long expectedId, Boolean expectedValue) {
-        Role role = roleRepository.findRoleById(expectedId);
-        Assertions.assertEquals(expectedValue, role);
-        if (role != null) {
-            Assertions.assertEquals(expectedId, role.getId());
-        }
-    }
-
-    @Test
     void testFindAllRoles() {
         int expectedSize = 3;
         int resultSize = roleRepository.findAllRoles().size();

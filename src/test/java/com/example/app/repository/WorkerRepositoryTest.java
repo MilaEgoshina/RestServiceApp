@@ -14,13 +14,11 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.ext.ScriptUtils;
 import org.testcontainers.jdbc.JdbcDatabaseDelegate;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 
-
+@Testcontainers
 public class WorkerRepositoryTest {
 
     @Container
@@ -132,6 +130,36 @@ public class WorkerRepositoryTest {
         Assertions.assertEquals(1, result.getComputerList().size());
         Assertions.assertEquals(1, result.getWorkRelationsList().size());
     }
+
+    @Test
+    void testDeleteByWorkerId() {
+
+        int expectedSize = workerRepository.findAllWorkers().size();
+
+        Worker worker = new Worker(null, "John", "Doe", null, null, null);
+        worker = workerRepository.saveWorker(worker);
+
+        workerRepository.deleteWorkerById(worker.getId());
+        int workerListAfterDelete = workerRepository.findAllWorkers().size();
+
+        Assertions.assertEquals(expectedSize, workerListAfterDelete);
+    }
+
+    @Test
+    void testFindAllWorkers() {
+        int expectedSize = 5;
+        int resultSize = workerRepository.findAllWorkers().size();
+
+        Assertions.assertEquals(expectedSize, resultSize);
+    }
+
+    @Test
+    void testFindById_existingId() {
+        Long expectedId = 1L;
+        Worker worker = workerRepository.findWorkerById(expectedId);
+        Assertions.assertEquals(expectedId, worker.getId());
+    }
+
 
 }
 
