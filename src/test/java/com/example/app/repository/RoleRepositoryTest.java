@@ -12,8 +12,9 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.ext.ScriptUtils;
 import org.testcontainers.jdbc.JdbcDatabaseDelegate;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-
+@Testcontainers
 public class RoleRepositoryTest {
     @Container
     public static PostgreSQLContainer<?> databaseContainer = new PostgreSQLContainer<>("postgres:latest")
@@ -72,8 +73,8 @@ public class RoleRepositoryTest {
     }
 
     @Test
-    void deleteById() {
-        Boolean expectedValue = true;
+    void testDeleteRoleById() {
+
         int expectedSize = roleRepository.findAllRoles().size();
 
         Role tempRole = new Role(null, "Manager");
@@ -86,7 +87,7 @@ public class RoleRepositoryTest {
     }
 
     @ParameterizedTest
-    void findById(Long expectedId, Boolean expectedValue) {
+    void testFinRoleById(Long expectedId, Boolean expectedValue) {
         Role role = roleRepository.findRoleById(expectedId);
         Assertions.assertEquals(expectedValue, role);
         if (role != null) {
@@ -95,7 +96,7 @@ public class RoleRepositoryTest {
     }
 
     @Test
-    void findAll() {
+    void testFindAllRoles() {
         int expectedSize = 3;
         int resultSize = roleRepository.findAllRoles().size();
 
