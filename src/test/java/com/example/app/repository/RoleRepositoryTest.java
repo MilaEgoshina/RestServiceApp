@@ -86,7 +86,7 @@ public class RoleRepositoryTest {
         Assertions.assertEquals(expectedSize, roleListAfterSize);
     }
 
-    @ParameterizedTest
+    @Test
     void testFinRoleById(Long expectedId, Boolean expectedValue) {
         Role role = roleRepository.findRoleById(expectedId);
         Assertions.assertEquals(expectedValue, role);
