@@ -13,6 +13,8 @@ import org.testcontainers.jdbc.JdbcDatabaseDelegate;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static org.junit.Assert.assertEquals;
+
 @Testcontainers
 public class ComputerRepositoryTest {
 
@@ -110,5 +112,24 @@ public class ComputerRepositoryTest {
         Assertions.assertEquals(expectedSize, result);
     }
 
+    @Test
+    void testFindComputerByItsNumber() {
 
+        String existingNumber = "JKL56789";
+        String nonExistingNumber = "not exits number";
+
+        Computer computer = computerRepository.findComputerBySerialNumber(existingNumber);
+        assertEquals(existingNumber, computer.getSerialNumber());
+    }
+
+    @Test
+    void testFindComputerById() {
+
+        Long existingId = 1L;
+
+        Computer computer = computerRepository.findComputerById(existingId);
+        assertEquals(existingId, computer.getId());
+
+    }
 }
+
