@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WorkRelationsRepository {
 
-    private ConnectionToDB connectionToDB = ConnectionToDB.initializeConnection();
+    private ConnectionToDB connectionToDB = ConnectionToDB.initialize();
 
     public WorkRelationsRepository() {
     }
@@ -17,7 +17,7 @@ public class WorkRelationsRepository {
 
     public WorkRelations saveWorkRelations(WorkRelations workRelations) {
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO relations (realtion_name) VALUES(?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, workRelations.getName());
@@ -38,7 +38,7 @@ public class WorkRelationsRepository {
     }
 
     public void updateWorkRelations(WorkRelations workRelations) {
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE relations SET realtion_name = ? WHERE relation_id = ?;")) {
 
             preparedStatement.setString(1, workRelations.getName());
@@ -52,7 +52,7 @@ public class WorkRelationsRepository {
 
     public void deleteRelationsById(Long id) {
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM relations WHERE relation_id = ?;")) {
 
             preparedStatement.setLong(1, id);
@@ -65,7 +65,7 @@ public class WorkRelationsRepository {
     public WorkRelations findRelationsById(Long id) {
         WorkRelations workRelations = new WorkRelations();
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT relation_id, relation_name FROM relations WHERE relation_id = ?")) {
 
             preparedStatement.setLong(1, id);
@@ -83,7 +83,7 @@ public class WorkRelationsRepository {
 
     public List<WorkRelations> findAllRelations() {
         List<WorkRelations> workRelationsList = new ArrayList<>();
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM relations;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -103,7 +103,7 @@ public class WorkRelationsRepository {
     public boolean existEntityById(Long id){
         boolean isExisting = true;
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM relations WHERE relation_id = ? LIMIT 1);")){
 
             preparedStatement.setLong(1,id);

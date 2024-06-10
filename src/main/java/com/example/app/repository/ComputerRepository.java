@@ -11,14 +11,14 @@ import java.util.List;
 
 public class ComputerRepository {
 
-    ConnectionToDB connectionToDB = ConnectionToDB.initializeConnection();
+    private final ConnectionToDB connectionToDB = ConnectionToDB.initialize();
     public ComputerRepository() {
 
     }
 
     public Computer saveComputer(Computer computer) {
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO computers (serial_number, worker_id) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, computer.getSerialNumber());
@@ -45,7 +45,7 @@ public class ComputerRepository {
     }
 
     public void updateComputer(Computer computer) {
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(" UPDATE computers SET serial_number = ?, computer_id = ? WHERE computer_id = ?;")) {
 
             preparedStatement.setString(1, computer.getSerialNumber());
@@ -67,7 +67,7 @@ public class ComputerRepository {
 
     public void deleteComputerById(Long id) {
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM computers WHERE computer_id = ?;")) {
 
             preparedStatement.setLong(1, id);
@@ -79,7 +79,7 @@ public class ComputerRepository {
 
     public void deleteComputerByWorkerId(Long workerId) {
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM computers WHERE worker_id = ?;")) {
 
             preparedStatement.setLong(1, workerId);
@@ -92,7 +92,7 @@ public class ComputerRepository {
     public Computer findComputerById(Long id) {
         Computer computer = null;
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT computer_id, serial_number, worker_id FROM computers WHERE computer_id = ?;")) {
 
             preparedStatement.setLong(1, id);
@@ -109,7 +109,7 @@ public class ComputerRepository {
 
     public Computer findComputerBySerialNumber(String serialNumber) {
         Computer computer = null;
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT computer_id, serial_number, worker_id FROM computers WHERE serial_number = ?;")) {
 
             preparedStatement.setString(1, serialNumber);
@@ -126,7 +126,7 @@ public class ComputerRepository {
 
     public List<Computer> findAllComputers() {
         List<Computer> computerList = new ArrayList<>();
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM computers;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -142,7 +142,7 @@ public class ComputerRepository {
 
     public List<Computer> findAllComputersByWorkerId(Long workerId){
         List<Computer> computerList = new ArrayList<>();
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM computers WHERE worker_id = ?;")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -159,7 +159,7 @@ public class ComputerRepository {
     public boolean existEntityById(Long id){
         boolean isExisting = true;
 
-        try (Connection connection = ConnectionToDB.getConnection();
+        try (Connection connection = connectionToDB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(" SELECT exists (SELECT 1 FROM computers WHERE computer_id = ? LIMIT 1);")){
 
             preparedStatement.setLong(1,id);

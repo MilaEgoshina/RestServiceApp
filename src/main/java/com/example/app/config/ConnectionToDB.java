@@ -10,34 +10,31 @@ public class ConnectionToDB{
     private static final String URL = "url";
     private static final String USERNAME = "username";
     private static final String PASSWORD= "password";
-    private static Connection connection;
+    private static ConnectionToDB connectionToDBInstance;
 
-    private ConnectionToDB(){
+    public static ConnectionToDB initialize() {
+        if (connectionToDBInstance == null) {
+            connectionToDBInstance = new ConnectionToDB();
+            loadDriver(PropertiesFileInit.getProperties(DRIVER));
+        }
+        return connectionToDBInstance;
     }
-    public static ConnectionToDB initializeConnection(){
 
-        ConnectionToDB localInstance = new ConnectionToDB();
-
+    private static void loadDriver(String driverClass) {
         try {
-            Class.forName(PropertiesFileInit.getProperties(DRIVER));
+            Class.forName(driverClass);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return localInstance;
-
     }
 
-    public static Connection getConnection() throws SQLException {
-        try {
-            connection = DriverManager.getConnection(
+    public Connection getConnection() throws SQLException {
+
+        return DriverManager.getConnection(
                     PropertiesFileInit.getProperties(URL),
                     PropertiesFileInit.getProperties(USERNAME),
-                    PropertiesFileInit.getProperties(PASSWORD)
-            );
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return connection;
+                    PropertiesFileInit.getProperties(PASSWORD));
+
     }
 
 
