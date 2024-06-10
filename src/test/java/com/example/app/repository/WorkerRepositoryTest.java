@@ -6,6 +6,7 @@ import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.PortBinding;
 import com.github.dockerjava.api.model.Ports;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.jdbc.JdbcDatabaseDelegate;
 import org.testcontainers.junit.jupiter.Container;
 
 public class WorkerRepositoryTest {
@@ -20,5 +21,6 @@ public class WorkerRepositoryTest {
                     new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(5432), new ExposedPort(5432)))
             )).withInitScript("schema.sql");
 
-
+    private static WorkerRepository workerRepository;
+    private static JdbcDatabaseDelegate jdbcDatabaseDelegate;
 }
