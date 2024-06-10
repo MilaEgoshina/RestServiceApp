@@ -42,6 +42,7 @@ public class RoleRepositoryTest {
 
     @BeforeEach
     void setUp() {
+
         ScriptUtils.runInitScript(jdbcDatabaseDelegate, "schema.sql");
     }
 
