@@ -5,7 +5,7 @@ import com.example.app.dto.OutgoingComputerDTO;
 import com.example.app.dto.UpdateComputerDTO;
 import com.example.app.entity.Computer;
 import com.example.app.exception.NotFoundException;
-import com.example.app.mapper.ComputerMapper;
+import com.example.app.mapper.impl.ComputerMapper;
 import com.example.app.repository.ComputerRepository;
 import org.junit.Before;
 import org.junit.Test;

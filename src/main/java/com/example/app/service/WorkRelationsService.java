@@ -6,7 +6,7 @@ import com.example.app.dto.UpdateWorkRelationsDTO;
 import com.example.app.entity.WorkRelations;
 import com.example.app.entity.WorkerAndRelations;
 import com.example.app.exception.NotFoundException;
-import com.example.app.mapper.WorkRelationsMapper;
+import com.example.app.mapper.impl.WorkRelationsMapper;
 import com.example.app.repository.WorkRelationsRepository;
 import com.example.app.repository.WorkerAndRelationsRepository;
 import com.example.app.repository.WorkerRepository;

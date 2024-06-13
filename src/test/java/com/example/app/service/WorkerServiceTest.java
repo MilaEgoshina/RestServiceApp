@@ -5,7 +5,7 @@ import com.example.app.dto.OutgoingFullWorkerDTO;
 import com.example.app.dto.UpdateWorkerDTO;
 import com.example.app.entity.Worker;
 import com.example.app.exception.NotFoundException;
-import com.example.app.mapper.WorkerMapper;
+import com.example.app.mapper.impl.WorkerMapper;
 import com.example.app.repository.WorkerRepository;
 import org.junit.Before;
 import org.junit.Test;

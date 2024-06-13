@@ -5,7 +5,7 @@ import com.example.app.dto.OutgoingRoleDTO;
 import com.example.app.dto.UpdateRoleDTO;
 import com.example.app.entity.Role;
 import com.example.app.exception.NotFoundException;
-import com.example.app.mapper.RoleMapper;
+import com.example.app.mapper.impl.RoleMapper;
 import com.example.app.repository.RoleRepository;
 
 import java.util.List;

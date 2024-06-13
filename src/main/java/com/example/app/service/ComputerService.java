@@ -3,7 +3,7 @@ package com.example.app.service;
 import com.example.app.dto.*;
 import com.example.app.entity.Computer;
 import com.example.app.exception.NotFoundException;
-import com.example.app.mapper.ComputerMapper;
+import com.example.app.mapper.impl.ComputerMapper;
 import com.example.app.repository.ComputerRepository;
 
 import java.util.List;
