@@ -3,16 +3,8 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 f
 6src/main/java/com/example/app/dto/OutgoingRoleDTO.java,4\2\4243fce1f5357f943b6b4932a192f25aed18135a
-z
-Jsrc/main/java/com/example/app/mapper/interfaces/WorkerMapperInterface.java,7\f\7fc0ab89ba72e80d1e8ae5c6ffb5f2b6ca1d6e19
-x
-Hsrc/main/java/com/example/app/mapper/interfaces/RoleMapperInterface.java,f\b\fbaec4a4644d019739e90d4318bbab1232687d3d
-Å
-Qsrc/main/java/com/example/app/mapper/interfaces/WorkRelationsMapperInterface.java,f\6\f620e66f2804abadb68d8fb3dd6e3c4bec06865d
 h
 8src/main/java/com/example/app/dto/IncomingWorkerDTO.java,8\5\851c889e0788f324328a270f0f0c707278942751
-|
-Lsrc/main/java/com/example/app/mapper/interfaces/ComputerMapperInterface.java,6\b\6bd744ecdb09dafcc5ca91e47fcbe7d0322ba8c8
 o
 ?src/main/java/com/example/app/dto/IncomingWorkRelationsDTO.java,a\f\afb0ffeea18a5f571cae27b75d82ff0a0cad2be1
 n
@@ -39,10 +31,6 @@ o
 ?src/main/java/com/example/app/dto/OutgoingWorkRelationsDTO.java,a\3\a38ba15c9546c7dd2481afec1085d8a372a8a4c1
 d
 4src/main/java/com/example/app/dto/UpdateRoleDTO.java,5\a\5a66c9a61da946a916600d734edbde1eff8252cc
-d
-4src/main/java/com/example/app/mapper/RoleMapper.java,2\3\230b469d8ffd703100f0fafb7aca7643da174426
-f
-6src/main/java/com/example/app/mapper/WorkerMapper.java,6\6\661da3e75f5f5ee6dc8047dd5c4d6cd0909bc72a
 l
 <src/main/java/com/example/app/config/PropertiesFileInit.java,2\c\2c53cffcdd6049141c2346affbafcde6a047c88d
 b
@@ -55,8 +43,6 @@ h
 0src/main/java/com/example/app/entity/Worker.java,9\b\9b69ba99495653b3ba79a958c470c89197229687
 l
 <src/main/java/com/example/app/entity/WorkerAndRelations.java,c\7\c7ff4db9e069c9e604a7edc803adb00d435d620a
-h
-8src/main/java/com/example/app/mapper/ComputerMapper.java,3\5\35522f8ae82e4dd26fbb44e2c589a2589c079e04
 u
 Esrc/main/java/com/example/app/repository/WorkRelationsRepository.java,a\c\ac27ee9e24a40148a26adb2ac633d866650fd116
 l
@@ -67,8 +53,6 @@ p
 @src/main/java/com/example/app/repository/ComputerRepository.java,6\1\61124bccb9870b7e295ad30ca211d861950a0d35
 n
 >src/main/java/com/example/app/repository/WorkerRepository.java,0\f\0f0daf0acfef5c67bc57e9d533ab19e8f797e13e
-m
-=src/main/java/com/example/app/mapper/WorkRelationsMapper.java,b\1\b11ebb245f56bd2c7d7a692d6ea46d90727c10dc
 o
 ?src/main/java/com/example/app/service/WorkRelationsService.java,8\1\8139029b9b7452a14b428e17f8af7357aab1f7b9
 n
