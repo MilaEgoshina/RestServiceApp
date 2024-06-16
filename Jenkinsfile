@@ -15,7 +15,7 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-        stage('Deploy') {
+/*         stage('Deploy') {
             steps {
                 // Copy the WAR file to a remote server
                 // Replace with your actual remote server information
@@ -31,5 +31,5 @@ pipeline {
                 }
             }
         }
-    }
+    } */
 }
