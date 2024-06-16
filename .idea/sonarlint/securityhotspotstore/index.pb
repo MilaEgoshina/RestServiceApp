@@ -85,3 +85,5 @@ r
 Bsrc/test/java/com/example/app/repository/WorkerRepositoryTest.java,b\d\bd59be008b2a22e302c2929211f68c6ebf90836d
 t
 Dsrc/test/java/com/example/app/repository/ComputerRepositoryTest.java,8\c\8c0d7d325498f4157e50c3580bb0b8feec42eb6f
+;
+Jenkinsfile,0\c\0c2c5c506cef0ed2d3ad2b7e45e97980b66f5520

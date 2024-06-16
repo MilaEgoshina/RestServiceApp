@@ -18,7 +18,7 @@ pipeline {
         }
         stage('run') {
             steps {
-                sh "cp /var/lib/jenkins/workspace/RestServiceApp/target/RestServiceApp-1.0-SNAPSHOT.war /opt/tomcat/webapps/"
+                sh "cp /var/lib/jenkins/workspace/RestService/target/RestServiceApp-1.0-SNAPSHOT.war /opt/tomcat/webapps/"
                 //sh "sudo systemctl restart tomcat"
             }
         }
