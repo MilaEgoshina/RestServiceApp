@@ -23,7 +23,7 @@ pipeline {
                     name: 'milav1',
                     host: '127.0.0.1',
                     user: 'milav1',
-                    password: 'Milavika1997!',
+                    password: 'password',
                     port: 22 // Default SSH port
                 ] {
                     sh "cp /var/lib/jenkins/workspace/RestService/target/RestServiceApp-1.0-SNAPSHOT.war /opt/tomcat/webapps/"
