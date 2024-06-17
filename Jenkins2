@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        echo "Check code is downloaded"
+        git branch: 'main', url: 'https://github.com/MilaEgoshina/RestService.git'
+        sh 'ls -la'
+      }
+    }
+    stage('build') {
+      steps {
+        echo "Build App"
+        sh 'mvn -e clean install'
+        sh 'ls'
+      }
+    }
+    stage('SSH-agent-Deploy') {
+      steps {
+        script {
+          echo 'Hello tomcat'
+          withCredentials([sshUserPrivateKey(credentialsId: 'a294e4d9-6f13-47ef-a5a6-381edf67e9ce', keyFileVariable: 'keySet', passphraseVariable: 'pass', usernameVariable: 'user')]){
+            sh 'ssh -tt -o StrictHostKeyChecking=no -l root 10.0.2.15 whoami'
+            sh 'scp -o StrictHostKeyChecking=no ./target/RestServiceArchive.war root@10.0.2.15:/opt/tomcat/webapps/.'
+            sh '''
+            ssh -tt -o StrictHostKeyChecking=no root@10.0.2.15 <<- EOF
+            ls -l
+            pwd
+            hostname -I
+            exit 0
+            <<EOF '''
+          }
+        }
+      }
+    }
+  }
+}
